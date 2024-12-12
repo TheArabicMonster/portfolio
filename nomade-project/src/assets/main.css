@@ -1,7 +1,9 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: #333;
-  background: #f0f0f0; /* Background color for neomorphism */
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
   margin: 0;
   padding: 0;
   overflow: hidden;

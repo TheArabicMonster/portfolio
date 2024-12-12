@@ -14,7 +14,8 @@ function init() {
 
   scene = new THREE.Scene()
 
-  const geometry = new THREE.PlaneGeometry(10, 10, 32, 32)
+  // Adjust the geometry to be as wide as the window
+  const geometry = new THREE.PlaneGeometry(window.innerWidth / 100, window.innerHeight / 100, 32, 32)
   const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true })
 
   plane = new THREE.Mesh(geometry, material)
@@ -39,8 +40,9 @@ function onWindowResize() {
 function animate() {
   requestAnimationFrame(animate)
 
-  plane.rotation.x += 0.01
-  plane.rotation.y += 0.01
+  // Slow down the rotation
+  plane.rotation.x += 0.001
+  plane.rotation.y += 0.001
 
   renderer.render(scene, camera)
 }
