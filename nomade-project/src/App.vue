@@ -37,6 +37,11 @@ import { RouterLink, RouterView } from 'vue-router'
   }
 }
 
+nav .tier a {
+  transition: all 0.7s ease; /* Ajustez la durée de la transition ici */
+}
+
+
 body {
   margin: 0;
   padding: 0;
