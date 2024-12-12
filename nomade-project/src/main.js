@@ -6,31 +6,19 @@ import * as THREE from 'three'
 createApp(App).use(router).mount('#app')
 
 // Three.js background animation
-let camera, scene, renderer, particles
+let camera, scene, renderer, plane
 
 function init() {
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000)
-  camera.position.z = 400
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  camera.position.z = 5
 
   scene = new THREE.Scene()
 
-  const geometry = new THREE.BufferGeometry()
-  const vertices = []
+  const geometry = new THREE.PlaneGeometry(10, 10, 32, 32)
+  const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true })
 
-  for (let i = 0; i < 10000; i++) {
-    const x = THREE.MathUtils.randFloatSpread(2000)
-    const y = THREE.MathUtils.randFloatSpread(2000)
-    const z = THREE.MathUtils.randFloatSpread(2000)
-
-    vertices.push(x, y, z)
-  }
-
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3))
-
-  const material = new THREE.PointsMaterial({ color: 0x888888 })
-
-  particles = new THREE.Points(geometry, material)
-  scene.add(particles)
+  plane = new THREE.Mesh(geometry, material)
+  scene.add(plane)
 
   renderer = new THREE.WebGLRenderer()
   renderer.setSize(window.innerWidth, window.innerHeight)
@@ -51,8 +39,8 @@ function onWindowResize() {
 function animate() {
   requestAnimationFrame(animate)
 
-  particles.rotation.x += 0.0005
-  particles.rotation.y += 0.001
+  plane.rotation.x += 0.01
+  plane.rotation.y += 0.01
 
   renderer.render(scene, camera)
 }
