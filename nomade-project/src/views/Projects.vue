@@ -2,13 +2,13 @@
   <div class="projects-container">
     <h1 class="title">Projects</h1>
     <p class="description">Here you can showcase your projects...</p>
-    
+
     <div class="projects-timeline-container">
       <div class="projects-wrapper" ref="projectsWrapper">
         <div class="projects">
-          <div class="project" 
-               v-for="(project, index) in projects" 
-               :key="index" 
+          <div class="project"
+               v-for="(project, index) in projects"
+               :key="index"
                data-aos="fade-left"
                :data-aos-delay="index * 300"
                :data-aos-duration="800"
@@ -26,7 +26,7 @@
         <div class="timeline" data-aos="fade-in" data-aos-duration="400"></div>
       </div>
     </div>
-    <ProjectModal 
+    <ProjectModal
       :show="selectedProject !== null"
       :project="selectedProject"
       @close="selectedProject = null"
@@ -42,32 +42,32 @@ import ProjectModal from '../components/ProjectModal.vue';
 
 const projects = [
   {
-    image: 'path/to/image1.jpg',
+    image: 'src\\assets\\images\\projetc1.jpg',
     title: 'Project 1',
     description: 'Description of project 1.'
   },
   {
-    image: 'path/to/image2.jpg',
+    image: 'src\\assets\\images\\projetc2.jpg',
     title: 'Project 2',
     description: 'Description of project 2.'
   },
   {
-    image: 'path/to/image3.jpg',
+    image: 'src\\assets\\images\\project3.jpg',
     title: 'Project 3',
     description: 'Description of project 3.'
   },
   {
-    image: 'path/to/image4.jpg',
+    image: 'src\\assets\\images\\project4.jpg',
     title: 'Project 4',
     description: 'Description of project 4.'
   },
   {
-    image: 'path/to/image5.jpg',
+    image: 'src\\assets\\images\\project5.jpg',
     title: 'Project 5',
     description: 'Description of project 5.'
   },
   {
-    image: 'path/to/image6.jpg',
+    image: 'src\\assets\\images\\project6.jpg',
     title: 'Project 6',
     description: 'Description of project 6.'
   }
