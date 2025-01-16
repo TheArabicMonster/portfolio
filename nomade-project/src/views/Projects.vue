@@ -4,7 +4,7 @@
     <p class="description">Here you can showcase your projects...</p>
     
     <div class="projects-timeline-container">
-      <div class="projects-wrapper">
+      <div class="projects-wrapper" ref="projectsWrapper">
         <div class="projects">
           <div class="project" 
                v-for="(project, index) in projects" 
@@ -55,6 +55,21 @@ const projects = [
     image: 'path/to/image3.jpg',
     title: 'Project 3',
     description: 'Description of project 3.'
+  },
+  {
+    image: 'path/to/image4.jpg',
+    title: 'Project 4',
+    description: 'Description of project 4.'
+  },
+  {
+    image: 'path/to/image5.jpg',
+    title: 'Project 5',
+    description: 'Description of project 5.'
+  },
+  {
+    image: 'path/to/image6.jpg',
+    title: 'Project 6',
+    description: 'Description of project 6.'
   }
   // Ajoutez plus de projets ici
 ];
@@ -63,6 +78,15 @@ const selectedProject = ref(null);
 
 const openProject = (project) => {
   selectedProject.value = project;
+};
+
+const projectsWrapper = ref(null);
+
+const handleScroll = (event) => {
+  if (projectsWrapper.value) {
+    event.preventDefault(); // Empêcher le défilement vertical de la page
+    projectsWrapper.value.scrollLeft += event.deltaY;
+  }
 };
 
 onMounted(() => {
@@ -75,6 +99,10 @@ onMounted(() => {
     mirror: false,
     anchorPlacement: 'top-center'
   });
+
+  if (projectsWrapper.value) {
+    projectsWrapper.value.addEventListener('wheel', handleScroll, { passive: false });
+  }
 });
 </script>
 
@@ -101,12 +129,13 @@ onMounted(() => {
 
 .projects-wrapper {
   position: relative;
+  overflow-x: auto; /* Permettre le défilement horizontal */
+  overflow-y: hidden; /* Masquer la barre de défilement verticale */
 }
 
 .projects {
   display: flex;
-  overflow-x: auto;
-  gap: 4rem;
+  gap: 6rem; /* Augmenter l'espace entre les projets */
   padding: 1rem;
   margin-bottom: 4rem;
   scroll-snap-type: x mandatory;
